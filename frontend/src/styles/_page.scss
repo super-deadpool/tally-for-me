@@ -1,0 +1,44 @@
+// Notion-style page layout primitives (.page, .page-title, ...), used by feature pages.
+
+.page {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-12) var(--space-16);
+
+  @media (max-width: 768px) {
+    padding: var(--space-6) var(--space-4) var(--space-12);
+  }
+}
+
+.page-icon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: var(--space-3);
+}
+
+.page-title {
+  font-size: var(--text-title);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+
+  @media (max-width: 768px) {
+    font-size: var(--text-2xl);
+  }
+}
+
+.page-subtitle {
+  margin-top: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: var(--text-md);
+}
+
+.page-section {
+  margin-top: var(--space-8);
+}
+
+.section-title {
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+  font-size: var(--text-lg);
+}

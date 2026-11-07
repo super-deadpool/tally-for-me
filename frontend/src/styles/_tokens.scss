@@ -1,0 +1,200 @@
+// =============================================================================
+// Design tokens — Notion-inspired.
+//
+// Components must use these variables, never raw colors, so light/dark themes
+// work everywhere. The theme is chosen by `data-theme` on <html> (set by
+// ThemeService, and by an inline script in index.html before first paint).
+// =============================================================================
+
+:root {
+  color-scheme: light;
+
+  // ---- Surfaces ------------------------------------------------------------
+  --color-bg: #ffffff;
+  --color-bg-sidebar: #f8f8f7;
+  --color-bg-elevated: #ffffff;
+  --color-bg-muted: #f7f6f3;
+  --color-bg-hover: rgba(55, 53, 47, 0.06);
+  --color-bg-active: rgba(55, 53, 47, 0.1);
+  --color-overlay: rgba(15, 15, 15, 0.3);
+  --color-skeleton: rgba(55, 53, 47, 0.08);
+
+  // ---- Text ----------------------------------------------------------------
+  --color-text: #37352f;
+  --color-text-secondary: rgba(55, 53, 47, 0.65);
+  --color-text-tertiary: rgba(55, 53, 47, 0.45);
+  --color-text-inverse: #ffffff;
+
+  // ---- Lines ---------------------------------------------------------------
+  --color-border: rgba(55, 53, 47, 0.16);
+  --color-border-strong: rgba(55, 53, 47, 0.3);
+  --color-divider: rgba(55, 53, 47, 0.09);
+
+  // ---- Accent (Notion blue) ------------------------------------------------
+  --color-accent: #2383e2;
+  --color-accent-hover: #0077d4;
+  --color-accent-soft: rgba(35, 131, 226, 0.12);
+  --color-accent-contrast: #ffffff;
+  --color-focus-ring: rgba(35, 131, 226, 0.4);
+
+  // ---- Notion palette: text color + background color -----------------------
+  --color-gray: #787774;
+  --color-gray-bg: #f1f1ef;
+  --color-brown: #9f6b53;
+  --color-brown-bg: #f4eeee;
+  --color-orange: #d9730d;
+  --color-orange-bg: #fbecdd;
+  --color-yellow: #cb912f;
+  --color-yellow-bg: #fbf3db;
+  --color-green: #448361;
+  --color-green-bg: #edf3ec;
+  --color-blue: #337ea9;
+  --color-blue-bg: #e7f3f8;
+  --color-purple: #9065b0;
+  --color-purple-bg: #f6f3f9;
+  --color-pink: #c14c8a;
+  --color-pink-bg: #faf1f5;
+  --color-red: #d44c47;
+  --color-red-bg: #fdebec;
+
+  // ---- Semantic aliases ----------------------------------------------------
+  --color-success: var(--color-green);
+  --color-success-bg: var(--color-green-bg);
+  --color-warning: var(--color-yellow);
+  --color-warning-bg: var(--color-yellow-bg);
+  --color-danger: var(--color-red);
+  --color-danger-bg: var(--color-red-bg);
+  --color-info: var(--color-blue);
+  --color-info-bg: var(--color-blue-bg);
+
+  // ---- Heatmap -------------------------------------------------------------
+  --heat-done: #4a9a6c;
+  --heat-missed: #f2c9c6;
+  --heat-future: #efefed;
+  --heat-today-ring: var(--color-accent);
+
+  // ---- Tooltip / toast (inverted surface in both themes) -------------------
+  --color-tooltip-bg: #0f0f0f;
+  --color-tooltip-text: rgba(255, 255, 255, 0.9);
+
+  // ---- Elevation -----------------------------------------------------------
+  --shadow-sm: 0 1px 2px rgba(15, 15, 15, 0.08);
+  --shadow-md:
+    0 0 0 1px rgba(15, 15, 15, 0.05), 0 3px 6px rgba(15, 15, 15, 0.1),
+    0 9px 24px rgba(15, 15, 15, 0.2);
+  --shadow-inset-border: inset 0 0 0 1px var(--color-border);
+
+  // ---- Typography ----------------------------------------------------------
+  --font-sans:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI Variable Display', 'Segoe UI',
+    Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-mono: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 30px;
+  --text-title: 40px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+
+  // ---- Spacing (4px scale) -------------------------------------------------
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  // ---- Radius --------------------------------------------------------------
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-full: 999px;
+
+  // ---- Motion --------------------------------------------------------------
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 100ms;
+  --duration: 180ms;
+
+  // ---- Layout --------------------------------------------------------------
+  --sidebar-width: 240px;
+  --topbar-height: 45px;
+  --page-max-width: 900px;
+  --control-height-sm: 28px;
+  --control-height-md: 32px;
+  --control-height-lg: 40px;
+
+  --z-sidebar: 20;
+  --z-scrim: 30;
+  --z-tooltip: 50;
+  --z-toast: 60;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #191919;
+  --color-bg-sidebar: #202020;
+  --color-bg-elevated: #252525;
+  --color-bg-muted: #202020;
+  --color-bg-hover: rgba(255, 255, 255, 0.055);
+  --color-bg-active: rgba(255, 255, 255, 0.09);
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-skeleton: rgba(255, 255, 255, 0.07);
+
+  --color-text: rgba(255, 255, 255, 0.81);
+  --color-text-secondary: rgba(255, 255, 255, 0.46);
+  --color-text-tertiary: rgba(255, 255, 255, 0.28);
+  --color-text-inverse: #191919;
+
+  --color-border: rgba(255, 255, 255, 0.13);
+  --color-border-strong: rgba(255, 255, 255, 0.25);
+  --color-divider: rgba(255, 255, 255, 0.08);
+
+  --color-accent-soft: rgba(35, 131, 226, 0.2);
+  --color-focus-ring: rgba(35, 131, 226, 0.55);
+
+  --color-gray: #9b9b9b;
+  --color-gray-bg: #2f2f2f;
+  --color-brown: #ba856f;
+  --color-brown-bg: #4a3229;
+  --color-orange: #c77d48;
+  --color-orange-bg: #5c3b23;
+  --color-yellow: #ca9849;
+  --color-yellow-bg: #564328;
+  --color-green: #529e72;
+  --color-green-bg: #243d30;
+  --color-blue: #379ad3;
+  --color-blue-bg: #143a4e;
+  --color-purple: #9d68d3;
+  --color-purple-bg: #3c2d49;
+  --color-pink: #d15796;
+  --color-pink-bg: #4e2c3c;
+  --color-red: #df5452;
+  --color-red-bg: #522e2a;
+
+  --heat-done: #4f9f70;
+  --heat-missed: #5a2f2c;
+  --heat-future: #2a2a2a;
+
+  --color-tooltip-bg: #3f3f3f;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md:
+    0 0 0 1px rgba(255, 255, 255, 0.08), 0 3px 6px rgba(0, 0, 0, 0.3),
+    0 9px 24px rgba(0, 0, 0, 0.45);
+}

@@ -1,0 +1,44 @@
+// Styles for native form controls marked with the `ui-input` directive.
+// (Directives can't carry styles, so these live globally.)
+
+.ui-input {
+  display: block;
+  width: 100%;
+  height: var(--control-height-md);
+  padding: 0 var(--space-2);
+  background: var(--color-bg-muted);
+  border: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-inset-border);
+  font-size: var(--text-sm);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow:
+      inset 0 0 0 1px var(--color-accent),
+      0 0 0 3px var(--color-focus-ring);
+  }
+
+  &[aria-invalid='true'] {
+    box-shadow: inset 0 0 0 1px var(--color-danger);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}
+
+:root[data-theme='dark'] .ui-input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

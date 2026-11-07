@@ -1,0 +1,77 @@
+<div class="scroller" #scroller>
+  <div class="heatmap" [style.--weeks]="weekCount()">
+    <div class="months" aria-hidden="true">
+      @for (month of heatmap().months; track month.column) {
+        <span [style.grid-column]="month.column + 1 + ' / span 4'">{{ month.label }}</span>
+      }
+    </div>
+
+    <div class="weekdays" aria-hidden="true">
+      @for (day of weekdays; track $index) {
+        <span>{{ day }}</span>
+      }
+    </div>
+
+    <div
+      class="grid"
+      role="group"
+      aria-label="Gym attendance for the year"
+      (mouseover)="showTooltip($event)"
+      (focusin)="showTooltip($event)"
+      (mouseleave)="hideTooltip()"
+      (focusout)="hideTooltip()"
+    >
+      @for (week of heatmap().weeks; track $index; let col = $index) {
+        <div class="week">
+          @for (day of week; track $index) {
+            @if (!day) {
+              <span class="cell empty"></span>
+            } @else if (day.isToday && interactive()) {
+              <button
+                type="button"
+                class="cell"
+                data-today
+                [attr.data-state]="day.state"
+                [attr.data-date]="day.date"
+                [attr.data-col]="col"
+                [attr.aria-label]="day.label + '. Activate to toggle.'"
+                [attr.aria-pressed]="day.state === 'done'"
+                [attr.aria-disabled]="toggling() ? 'true' : null"
+                (click)="onToday()"
+              ></button>
+            } @else {
+              <span
+                class="cell"
+                role="img"
+                [attr.data-state]="day.state"
+                [attr.data-today]="day.isToday ? '' : null"
+                [attr.data-date]="day.date"
+                [attr.data-col]="col"
+                [attr.aria-label]="day.label"
+              ></span>
+            }
+          }
+        </div>
+      }
+
+      @if (tooltip(); as t) {
+        <div
+          class="tooltip"
+          role="tooltip"
+          [attr.data-align]="t.align"
+          [style.left.px]="t.x"
+          [style.top.px]="t.y"
+        >
+          {{ t.label }}
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<ul class="legend" aria-label="Legend">
+  <li><span class="cell" data-state="done"></span>Went</li>
+  <li><span class="cell" data-state="missed"></span>Missed</li>
+  <li><span class="cell" data-state="pending" data-today></span>Today</li>
+  <li><span class="cell" data-state="future"></span>Upcoming</li>
+</ul>

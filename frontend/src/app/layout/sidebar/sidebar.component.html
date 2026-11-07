@@ -1,0 +1,59 @@
+<div class="header">
+  <ui-avatar [name]="username()" />
+  <span class="workspace">
+    @if (username()) {
+      {{ username() }}'s Tally
+    } @else {
+      Tally
+    }
+  </span>
+  <button
+    ui-button
+    variant="ghost"
+    size="sm"
+    iconOnly
+    class="hide"
+    aria-label="Close sidebar"
+    (click)="state.hide()"
+  >
+    <ui-icon name="chevrons-left" />
+  </button>
+</div>
+
+<nav class="section" aria-label="Main">
+  @for (item of navItems(); track item.path) {
+    <a
+      class="item"
+      [routerLink]="item.path"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      (click)="onNavigate()"
+    >
+      <ui-icon [name]="item.icon" [size]="18" />
+      <span>{{ item.label }}</span>
+    </a>
+  }
+</nav>
+
+@if (startedOn()) {
+  <div class="section">
+    <p class="section-label">Your year</p>
+    <p class="meta">
+      <ui-icon name="calendar" [size]="14" />
+      Started {{ startedOn() }}
+    </p>
+  </div>
+}
+
+<div class="footer">
+  <button type="button" class="item" (click)="theme.cycle()">
+    <ui-icon [name]="themeMeta().icon" [size]="18" />
+    <span>Theme: {{ themeMeta().label }}</span>
+  </button>
+  @if (auth.isAuthenticated()) {
+    <button type="button" class="item" (click)="auth.logout()">
+      <ui-icon name="log-out" [size]="18" />
+      <span>Log out</span>
+    </button>
+  }
+</div>

@@ -1,0 +1,108 @@
+:host {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: var(--control-height-md);
+  padding: 0 var(--space-3);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast);
+}
+
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+// ---- Sizes ------------------------------------------------------------------
+:host([data-size='sm']) {
+  height: var(--control-height-sm);
+  padding: 0 var(--space-2);
+  font-size: var(--text-sm);
+}
+:host([data-size='lg']) {
+  height: var(--control-height-lg);
+  padding: 0 var(--space-4);
+  font-size: var(--text-md);
+}
+:host(.icon-only) {
+  width: var(--control-height-md);
+  padding: 0;
+}
+:host(.icon-only[data-size='sm']) {
+  width: var(--control-height-sm);
+}
+:host(.icon-only[data-size='lg']) {
+  width: var(--control-height-lg);
+}
+:host(.full-width) {
+  width: 100%;
+}
+
+// ---- Variants -----------------------------------------------------------------
+:host([data-variant='primary']) {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  box-shadow: var(--shadow-sm);
+  &:hover {
+    background: var(--color-accent-hover);
+  }
+}
+
+:host([data-variant='secondary']) {
+  box-shadow: var(--shadow-inset-border);
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+  &:active {
+    background: var(--color-bg-active);
+  }
+}
+
+:host([data-variant='ghost']) {
+  color: var(--color-text-secondary);
+  &:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text);
+  }
+  &:active {
+    background: var(--color-bg-active);
+  }
+}
+
+:host([data-variant='danger']) {
+  color: var(--color-danger);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-danger) 45%, transparent);
+  &:hover {
+    background: var(--color-danger-bg);
+  }
+}
+
+// ---- States -------------------------------------------------------------------
+:host([disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+:host(.loading) {
+  opacity: 1;
+  cursor: progress;
+  .content {
+    opacity: 0.6;
+  }
+}
